@@ -30,7 +30,7 @@ const actions = {
         commit('removeTodo', id);
     },
     async updateTodo({ commit }, updatedTodo) {
-        const response = await axios.put(api_url + `/${updatedTodo.id}`);
+        const response = await axios.put(api_url + `/${updatedTodo.id}`, updatedTodo);
 
         commit('setUpdatedTodo', response.data);
     },
