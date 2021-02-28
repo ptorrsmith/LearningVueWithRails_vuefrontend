@@ -45,7 +45,7 @@ export default {
                 title: currentTodo.title,
                 completed: !currentTodo.completed
             }
-            this.updatedTodo(updatedTodo);
+            this.updateTodo(updatedTodo);
         }
     },
     computed: {
