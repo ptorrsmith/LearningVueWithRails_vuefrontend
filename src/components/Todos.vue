@@ -17,8 +17,8 @@
             @dblclick="onDoubleClick(todo)"
             class="todo"
             v-bind:class="{'is-complete':todo.completed}">
-            {{ todo.title }}
-            <i @click="deleteTodo(todo.id)" class=" fas fa-trash-alt"></i>
+                {{ todo.title }}
+                <i @click="deleteTodo(todo.id)" class=" fas fa-trash-alt"></i>
 
             </div>
         </div>
@@ -49,6 +49,7 @@ export default {
         }
     },
     computed: {
+        // ... is spread operator, breaking the mapGetters array into a list of its component items
         ...mapGetters([
             'allTodos'
         ])
@@ -104,6 +105,11 @@ i {
     height: 10px;
     border: 1px solid black;
     background: #fff;
+}
+
+.is-complete {
+    background: #35495e;
+    color: #fff;
 }
 
 @media (max-width: 500px) {
