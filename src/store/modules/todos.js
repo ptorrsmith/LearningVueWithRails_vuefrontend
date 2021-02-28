@@ -33,10 +33,22 @@ const actions = {
         const response = await axios.put(api_url + `/${updatedTodo.id}`);
 
         commit('setUpdatedTodo', response.data);
+    },
+    async addTodo({ commit }, title) {
+        const response = await axios.post(
+            api_url,
+            {
+                todo: {
+                    title,
+                    completed: false  // could / should also be set in Rails default on model
+                }
+            }
+            );
+         commit('newTodo', response.data);    
     }
 };
 
-const mutations = {
+const mutations = {  // modifying app's 'todos' state only via these mutations, called from actions 
     setTodos: (state, todos) => (state.todos = todos),
     removeTodo: (state, id) => (state.todos = state.todos.filter(todo => todo.id !== id)),
     setUpdatedTodo: (state, updatedTodo) => {
@@ -44,7 +56,8 @@ const mutations = {
         if (index !== -1) {
             state.todos.splice(index, 1, updatedTodo);
         }
-    }
+    },
+    newTodo: (state, todo) => (state.todos.unshift(todo))
 };
 
 export default {
