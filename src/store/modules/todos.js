@@ -25,6 +25,12 @@ const actions = {
         const response = await axios.get(api_url);
         commit('setTodos', response.data);
     },
+    async setPerPage({ commit }, event) {
+        // get perPage value
+        const limit = parseInt(event.target.options[event.target.options.selectedIndex].innerText)
+        const response = await axios.get(api_url + `?_limit=${limit}`);
+        commit('setTodos', response.data);
+    },
     async deleteTodo({ commit }, id) {
         await axios.delete(api_url + `/${id}`);
         commit('removeTodo', id);

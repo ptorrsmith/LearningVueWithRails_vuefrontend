@@ -7,6 +7,7 @@
       <h1>Pete's Todo List Manager</h1>
       <h6>Powered by Vue 3 | Vuex 4 | Axios | Ruby on Rails 6 | SQLite 3 | Jest for test ;-)</h6>
       <AddTodo />
+      <ShowPerPage />
       <Todos />
     </div>
   </div>
@@ -16,12 +17,14 @@
 // import HelloWorld from "./components/HelloWorld.vue";
 import Todos from "@/components/Todos.vue"
 import AddTodo from "@/components/AddTodo.vue"
+import ShowPerPage from "@/components/ShowPerPage.vue"
 export default {
   name: "App",
   components: {
     // HelloWorld
     Todos, 
     AddTodo,
+    ShowPerPage
   }
 };
 </script>
